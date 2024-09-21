@@ -114,6 +114,6 @@ Here are the possible values for phase:
 **When a pod is failing to start repeatedly, CrashLoopBackOff may appear in the Status field. Similarly.**
 <br><br>
 
-**_Reference_**
+**_Reference:_**
 
 kubernetes documentation
