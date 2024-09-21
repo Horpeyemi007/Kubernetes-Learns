@@ -1,6 +1,7 @@
 ## KUBERNETES NAMESPACE AND PODS
 
 ### NAMESPACE
+
 Namespaces provide a mechanism for isolating groups of resources within a single cluster.
 
 Names of resources need to be unique within a namespace, but not across namespaces.
@@ -21,23 +22,34 @@ Namespaces cannot be nested inside one another and each Kubernetes resource can 
 
 <br>
 
-**_creating and viewing manespace_**
+**_creating and viewing namespace_**
 
-Creating a nnamespace in kubernetes can be easily done through the kubectl command as below
+Creating a namespace in kubernetes can be easily done through the kubectl command as below
+
 ```
-kubectl create namespace mynamespace
+kubectl create namespace 👇
+
+namespace/mynamespace created
 ```
 
 The namespace can also be viewed with the command below
+
 ```
 kubectl get namespace mynamespace
 
-This will return the following
-// @TODO:
+This will return the following 👇
+
+NAME          STATUS   AGE
+mynamespace   Active   50s
 ```
+
+The namespace can also be deleted by running the command **_kubbectl delete namespace mynamespace_**.
+
+**Note:** deleting a namespace will also delete all resources in that namespace.
 <br>
 
 ### PODS
+
 Pods are the smallest deployable units of computing that you can create and manage in Kubernetes.
 
 A Pod represents a set of running containers on your cluster with shared namespaces and shared filesystem volumes.
@@ -52,28 +64,31 @@ A Pod is not a process, but an environment for running containers and a Pod pers
 
 **_A pod can be created by writing a YAML manifest through the declarative approach._**
 
-The example below illustrate a basic configuration that will create a Pod which consists of a container running the image **nginx:1.14.2**
+The example below illustrate a basic configuration that will create a Pod which consists of a container running the image **nginx:1.14.2** in the namespace with the name **_"mynamespace"_**
 
 ```yml
 apiVersion: v1
 kind: Pod
 metadata:
   name: nginx
+  namespace: mynamespace
 spec:
   containers:
-  - name: nginx
-    image: nginx:1.14.2
-    ports:
-    - containerPort: 80
+    - name: nginx
+      image: nginx:1.14.2
+      ports:
+        - containerPort: 80
 ```
 
 By saving the above yaml file with the name **_pod.yaml_** and run the command **_"kubectl create pod -f pod.yaml"_**.
 
 This will create a the pod running a nginx container image.
 
-The pod can also be viewed by running the _"kubectl get pod command"_ with the output as shown below.
+The pod can also be viewed by running the command _"kubectl get pod -n mynamespace"_ with the output as shown below.
 
 ```
+NAME    READY   STATUS    RESTARTS   AGE
+nginx   1/1     Running   0          32s
 ```
 
 ### POD LIFECYCLE
@@ -92,13 +107,12 @@ Here are the possible values for phase:
 
 **_Succeeded_**: All containers in the Pod have terminated in success, and will not be restarted.
 
-**_Failed_**:	All containers in the Pod have terminated, and at least one container has terminated in failure. That is, the container either exited with non-zero status or was terminated by the system, and is not set for automatic restarting.
+**_Failed_**: All containers in the Pod have terminated, and at least one container has terminated in failure. That is, the container either exited with non-zero status or was terminated by the system, and is not set for automatic restarting.
 
 **_Unknown_**: For some reason the state of the Pod could not be obtained. This phase typically occurs due to an error in communicating with the node where the Pod should be running.
 
-
 **When a pod is failing to start repeatedly, CrashLoopBackOff may appear in the Status field. Similarly.**
-<br>
+<br><br>
 
 **_Reference_**
 
