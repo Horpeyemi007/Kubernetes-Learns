@@ -1,8 +1,8 @@
 ## LABEL
 
-In kubernetes, **Label** are key/value pairs that can be attached to a kubernetes objects like pods or replicaSet. They are used to specify identity attribute to an object and also organize of select a subset of an object.
+In kubernetes, **Label** are key/value pairs that can be attached to a kubernetes objects like pods or replicaSet. They are used to specify identity attributes to an object and also organize or select a subset of an object.
 
-A kubernetes object like a single pod, can contains sets of labels in the form if key/value pairs - but each key must be unique. i.e Each key in a given object must be unique.
+A kubernetes object like a single pod, can contains sets of labels in the form of key/value pairs - but each key must be unique. i.e Each key in a given object must be unique.
 
 **_Below is an example of a label in the metadata section of a kubernetes object._**
 
