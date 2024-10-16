@@ -59,7 +59,7 @@ the *`/var/lib/mysql`* will be mounted to *`/tmp/data`* in the worker node where
 So, when the pod is eventually been deleted, restarted or it crashes, then we can still get the underlying 
 its data.
 
-Using this approach as a volume is not always recommended fpr a production use case, but should 
+Using this approach as a volume is not always recommended for a production use case, but should 
 however go for a persistent storage type where the volume is been mounted on a remote cloud storage. 
 eg (aws ebs,azure disk, google cloud storage etc.).
 
