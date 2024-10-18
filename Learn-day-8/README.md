@@ -2,5 +2,5 @@
 
 **_Reference:_**
 
-- kubernetes documentation
+- kubernetes documentations
 - Kubernetes Up & Running (O'REILLY)
