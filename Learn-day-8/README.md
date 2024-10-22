@@ -37,7 +37,7 @@ spec:
               containerPort: 80
 ```
 
-Let's say i save the above manifest into a replica.yml file and submit it to the kubernetes cluster using the kubectl command, then it will create a replicaSet with the name `frontend` including also 3 set of running Pods that ot manages.
+Let's say i save the above manifest into a replica.yml file and submit it to the kubernetes cluster using the kubectl command, then it will create a replicaSet with the name _`frontend`_ including also 3 set of running Pods that ot manages.
 
 If i should delete one of the Pods, then the replicaSet will automatically bring up another Pods, as this is to ensure that the specified number if Pods is always running.
 
