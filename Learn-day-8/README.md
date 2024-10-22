@@ -4,8 +4,7 @@
 
 According to the kubernetes documentation - A ReplicaSet's purpose is to maintain a
 stable set of replica Pods running at any given time.
-This is another way of saying that a replicaSet is a way of ensuring or guaranteeing that
-that a specific number of Pods is running.
+This is another way of saying that a replicaSet is a way of ensuring or guaranteeing that a specific number of Pods is running.
 
 To define a replicaSet, a selector field on how to identify a particular Pods to acquire
 is always specified. Also All Pods acquired by a ReplicaSet have their owning ReplicaSet’s identifying information within their ownerReferences field.
