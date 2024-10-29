@@ -115,7 +115,71 @@ spec:
 ```
 
 ### Deployment
+In kubernetes, deployment helps to deploy and automate the lifecycle of a kubernetes 
+pods.
+Just like the kubernetes replicaSet manages pods, the deployment object manages the 
+replicaSet by defining a relationship to the label and label selector.
 
+Deployment also helps to provide an update to the replicaSet and pods 
+by describing a desired state and the deployment controller changes the 
+state to the actual state.
+
+Some of the use case for the Kubernetes deployment object are below.
+
+* Declaring a pod new state.
+* Create a deployment to rollout a new replicaSet.
+* Rollback to an earlier version of the deployment.
+* Scaling up the workload.
+
+Blow is an example of using a deployment to manage 3 replicaSet
+of nginx pods.
+
+```yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+``` 
+By submitting the above manifest into the kubectl commands, will
+inturn create a deployment object with 3 replicas of pods.
+
+Running the _`kubectl get deployment`_ and _`kubectl get rs`_ will display the following information about
+the deployment and the replicaSet.
+
+```
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+nginx-deployment   3/3     3            3           18s
+```
+```
+NAME                     DESIRED   CURRENT   READY   AGE
+nginx-deployment-756123   3         3         3      18s
+```
+The several advantage of using a kubernetes deployment include
+
+* `Rolling updates:` This is the rolling out of new versions applications
+by scaling new pods. Using deployment helps to minimize downtime and some potential
+risks.
+* `Rollback:` Deployment makes it easy to rollback to the previous state version incase
+an error is encountered during the update.
+* `Health check:` With deployment, you can also easily check if the pods are healthy
+before scaling.
 
 
 **_Reference:_**
