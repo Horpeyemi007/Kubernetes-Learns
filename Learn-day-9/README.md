@@ -88,7 +88,57 @@ The way Kubernetes secrets works are similar to a configMap, but they are specif
 
 _**`Note`**_: Secrets in kubernetes are by default stored ad plain text in the etcd storage for the cluster.
 
+**Example of creating a kubernetes secret**:
 
+Lets say i have a text file named `dbpasswd` used to store application password configuration. Inside the file contains the 
+following database password information
+
+```
+admin@1234#
+```
+To create a kubernetes secret from the text, i will 
+run the command `kubectl create secret generic mysql-password --from-file=./dbpasswd`
+
+This command will create the db password from the file as an encoded kubernetes secrets. The secret
+kubernetes object can be viewed by running the command `kubectl get secret mysql-password -o yaml` which will 
+display the output as below
+
+```
+apiVersion: v1
+data:
+  dbpasswd: YWRtaW5AMTIzNCMK
+kind: Secret
+metadata:
+  creationTimestamp: "2024-11-19T12:27:15Z"
+  name: mysql-password
+  namespace: default
+  resourceVersion: "5852"
+  uid: 31b70a8a-9ea4-4cdd-9126-bbb0e8ce91b9
+type: Opaque
+```
+
+just like configMap, kubernetes secrets can also be exposed to pod and are always created at the pod creation time.
+The following shows how to expose a secret to pod through the volume
+
+```yml
+apiVersion: v1
+kind: Pod
+metadata:
+ name: my-pod
+spec:
+ containers:
+  - name: my-app
+    image: nginx
+    imagePullPolicy: Always
+    volumeMounts:
+    - name: passwd-vol
+      mountPath: "/tls"
+      readOnly: true
+ volumes:
+  - name: passwd-vol
+    secret:
+      secretName: mysql-password
+```
 
 **_Reference:_**
 
