@@ -132,7 +132,7 @@ spec:
     imagePullPolicy: Always
     volumeMounts:
     - name: passwd-vol
-      mountPath: "/tls"
+      mountPath: "/tls-data"
       readOnly: true
  volumes:
   - name: passwd-vol
