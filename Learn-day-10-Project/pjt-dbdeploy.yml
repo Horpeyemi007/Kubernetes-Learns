@@ -13,28 +13,28 @@ spec:
         app: dbserver
     spec:
       containers:
-      - name: dbserver
+      - name: dbserver    # The container ame must match the name on the java application backend "applicaton.properties file"
         image: mysql:8.0.39
         ports:
         - containerPort: 3306
           name: db-port
         env:
-        - name: MYSQL_ROOT_PASSWORD
+        - name: MYSQL_ROOT_PASSWORD   # Get the root user password for the database from the secret object
           valueFrom:
             secretKeyRef:
               key: dbRootPasswd
               name: dbsecret
-        - name: MYSQL_PASSWORD
+        - name: MYSQL_PASSWORD    # Get the other user password for the database from the secret object
           valueFrom:
             secretKeyRef:
               key: dbUserPasswd
               name: dbsecret
-        - name: MYSQL_DATABASE
+        - name: MYSQL_DATABASE    # Create a database on initialization and get the name of the db from the configMap
           valueFrom:
             configMapKeyRef:
               key: dbname
               name: backend-cm
-        - name: MYSQL_USER
+        - name: MYSQL_USER    # Create a user for the database on db initialization and get the name of the user from the configMap
           valueFrom:
             configMapKeyRef:
               key: dbuser
