@@ -17,4 +17,9 @@ Let's get started..
 
 In the project, i will be deploying a java spring-boot application that uses mysql as a database and nginx as a web proxy server.
 
-Also , i already have a online domain which i will connect to a kubernetes ingress controller object that will take care of the routing request.
+Also, i already have a online domain which i will connect to a kubernetes ingress controller object that will take care of the routing request.
+
+Firstly, i will be creating the following yaml kubernetes manifest
+
+* `pjt-configmap.yml`: This will be used to store some configurations for mysql database.
+* `secret.yml`: Used to store database password connection details
