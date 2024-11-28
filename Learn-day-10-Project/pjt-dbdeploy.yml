@@ -15,10 +15,10 @@ spec:
       containers:
       - name: dbserver
         image: mysql:8.0.39
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
+        # resources:
+        #   limits:
+        #     memory: "128Mi"
+        #     cpu: "500m"
         ports:
         - containerPort: 3306
           name: db-port
@@ -28,18 +28,18 @@ spec:
             secretKeyRef:
               key: dbRootPasswd
               name: dbsecret
-        - name: MYSQL_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              key: dbUserPasswd
-              name: dbsecret
-        - name: MYSQL_DATABASE
-          valueFrom:
-            configMapKeyRef:
-              key: dbname
-              name: backend-cm
-        - name: MYSQL_USER
-          valueFrom:
-            configMapKeyRef:
-              key: dbuser
-              name: backend-cm
+        # - name: MYSQL_PASSWORD
+        #   valueFrom:
+        #     secretKeyRef:
+        #       key: dbUserPasswd
+        #       name: dbsecret
+        # - name: MYSQL_DATABASE
+        #   valueFrom:
+        #     configMapKeyRef:
+        #       key: dbname
+        #       name: backend-cm
+        # - name: MYSQL_USER
+        #   valueFrom:
+        #     configMapKeyRef:
+        #       key: dbuser
+        #       name: backend-cm
