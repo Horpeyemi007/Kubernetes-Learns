@@ -15,10 +15,6 @@ spec:
       containers:
       - name: dbserver
         image: mysql:8.0.39
-        # resources:
-        #   limits:
-        #     memory: "128Mi"
-        #     cpu: "500m"
         ports:
         - containerPort: 3306
           name: db-port
