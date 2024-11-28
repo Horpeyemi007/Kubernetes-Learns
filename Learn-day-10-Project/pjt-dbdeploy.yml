@@ -28,18 +28,18 @@ spec:
             secretKeyRef:
               key: dbRootPasswd
               name: dbsecret
-        # - name: MYSQL_PASSWORD
-        #   valueFrom:
-        #     secretKeyRef:
-        #       key: dbUserPasswd
-        #       name: dbsecret
-        # - name: MYSQL_DATABASE
-        #   valueFrom:
-        #     configMapKeyRef:
-        #       key: dbname
-        #       name: backend-cm
-        # - name: MYSQL_USER
-        #   valueFrom:
-        #     configMapKeyRef:
-        #       key: dbuser
-        #       name: backend-cm
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: dbUserPasswd
+              name: dbsecret
+        - name: MYSQL_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              key: dbname
+              name: backend-cm
+        - name: MYSQL_USER
+          valueFrom:
+            configMapKeyRef:
+              key: dbuser
+              name: backend-cm
