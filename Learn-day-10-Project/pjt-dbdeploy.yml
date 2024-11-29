@@ -13,7 +13,7 @@ spec:
         app: dbserver
     spec:
       containers:
-      - name: dbserver    # The container ame must match the name on the java application backend "applicaton.properties file"
+      - name: dbserver    # The container name must match the name on the java application backend "applicaton.properties file"
         image: mysql:8.0.39
         ports:
         - containerPort: 3306
