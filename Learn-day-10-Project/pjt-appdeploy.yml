@@ -15,6 +15,7 @@ spec:
       containers:
       - name: appserver
         image: opeseen/bkappimage
+        command: ["tail", "-f", "/dev/null"]
         ports:
         - containerPort: 8080
           name: appserver-port
