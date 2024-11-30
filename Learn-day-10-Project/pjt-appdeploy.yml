@@ -16,24 +16,24 @@ spec:
       - name: appserver
         image: opeseen/bkappimage
         command: ["tail", "-f", "/dev/null"]
-        ports:
-        - containerPort: 8080
-          name: appserver-port
+        # ports:
+        # - containerPort: 8080
+          # name: appserver-port
       initContainers:
       - name: init-mysqldb
         image: busybox:1.28
         command: ['sh', '-c', "until nslookup dbserver.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for dbserver; sleep 2; done"]
 
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  name: appserersvc
-spec:
-  selector:
-    app: appserver
-  type: LoadBalancer
-  ports:
-  - port: 80
-    targetPort: appserver-port
-    protocol: TCP
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: appserversvc
+# spec:
+#   selector:
+#     app: appserver
+#   type: LoadBalancer
+#   ports:
+#   - port: 80
+#     targetPort: appserver-port
+#     protocol: TCP
