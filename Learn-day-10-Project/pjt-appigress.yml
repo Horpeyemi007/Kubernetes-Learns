@@ -9,7 +9,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: app.example.online
+  - host: app.example.online  # Use your own domain with the custom name here
     http:
       paths:
       - pathType: Prefix
