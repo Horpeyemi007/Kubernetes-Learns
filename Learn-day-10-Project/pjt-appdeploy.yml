@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: appserver
-        image: opeseen/bkappimage
+        image: nginx:latest
         command: ["tail", "-f", "/dev/null"]
         # ports:
         # - containerPort: 8080
