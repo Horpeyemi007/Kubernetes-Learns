@@ -26,15 +26,15 @@ spec:
         command: ['sh', '-c', "until nslookup dbserver.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for dbserver; sleep 2; done"]
 
 ---
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: appserver
-# spec:
-#   selector:
-#     app: appserver
-#   type: LoadBalancer
-#   ports:
-#   - port: 80
-#     targetPort: appserver-port
-#     protocol: TCP
+apiVersion: v1
+kind: Service
+metadata:
+  name: appserver
+spec:
+  selector:
+    app: appserver
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: appserver-port
+    protocol: TCP
