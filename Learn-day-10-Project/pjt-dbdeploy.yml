@@ -44,7 +44,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: dbserversvc
+  name: dbserver
 spec:
   selector:
     app: dbserver

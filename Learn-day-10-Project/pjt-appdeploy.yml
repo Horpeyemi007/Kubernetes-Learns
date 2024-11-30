@@ -23,13 +23,13 @@ spec:
       initContainers:
       - name: init-mysqldb
         image: busybox:1.28
-        command: ['sh', '-c', "until nslookup dbserversvc.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for dbserver; sleep 2; done"]
+        command: ['sh', '-c', "until nslookup dbserver.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for dbserver; sleep 2; done"]
 
 ---
 # apiVersion: v1
 # kind: Service
 # metadata:
-#   name: appserversvc
+#   name: appserver
 # spec:
 #   selector:
 #     app: appserver
