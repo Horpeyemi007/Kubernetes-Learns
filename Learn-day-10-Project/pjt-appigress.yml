@@ -9,7 +9,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: kube.horpedev.online
+  - host: app.example.online
     http:
       paths:
       - pathType: Prefix
