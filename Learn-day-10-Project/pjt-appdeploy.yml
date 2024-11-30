@@ -15,7 +15,8 @@ spec:
       containers:
       - name: appserver
         image: opeseen/bkappimage
-        command: ["tail", "-f", "/dev/null"]
+        command: ["java"]
+        args: ["-jar", "banking-v1.jar", "reg"]
         ports:
         - containerPort: 8080
           name: appserver-port
